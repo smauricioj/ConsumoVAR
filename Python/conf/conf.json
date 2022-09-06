@@ -1,0 +1,261 @@
+{
+	"Dados":{
+		"dir":"Dados",
+		"import_years":{
+			"begin":"2004",
+			"end":"2019"
+		}
+	},
+	"Resultados":{
+		"dir":"Resultados",
+		"fig_ext":".png",
+		"features_grids":[
+			{
+				"nome":"População",
+				"elementos":[
+					"Populacao",
+					"Variação_de_Populacao"
+				],
+				"replacements":{
+					"0":["Populacao","População"]
+				},
+				"figsize":[6.4,3.4],
+				"bottom_space":0.38
+			},{
+				"nome":"Frota de Veículos",
+				"elementos":[
+					"Automoveis",
+					"Motos",
+					"Variação_de_Automoveis",
+					"Variação_de_Motos",
+					"Índice_de_Motorização_Autos",
+					"Índice_de_Motorização_Motos"
+				],
+				"replacements":{
+					"0":[" Autos"," (Autos)"],
+					"1":["ção Motos","ção (Motos)"]
+				}
+			},{
+				"nome":"Produto Interno Bruto",
+				"elementos":[
+					"PIB",
+					"PIB_Deflacionado",
+					"PIB_per_capita",
+					"PIB_per_capita_Deflacionado"
+				]
+			},{
+				"nome":"Preços de Combustível",
+				"elementos":[
+					"Precos_Gasolina",
+					"Precos_Gasolina_Deflacionado",
+					"Precos_Etanol",
+					"Precos_Etanol_Deflacionado"
+				],
+				"replacements":{
+					"0":["Precos ",""]
+				}
+			},{
+				"nome":"Volume Vendido de Combustível",
+				"elementos":[
+					"Vendas_Gasolina",
+					"Vendas_Gasolina_por_unidade",
+					"Vendas_Etanol",
+					"Vendas_Etanol_por_unidade",
+					"Vendas_Total",
+					"Vendas_Total_por_unidade"
+				],
+				"replacements":{
+					"0":["Vendas ",""],
+					"1":[" por unidade"," por veículo"],
+					"2":[" Total"," (Gasolina + Etanol)"]
+				}
+			},{
+				"nome":"Consumo de Etanol",
+				"elementos":[
+					"Vendas_Etanol",
+					"Vendas_Etanol_por_unidade",
+					"Precos_Etanol",
+					"Precos_Etanol_Deflacionado"
+				],
+				"replacements":{
+					"0":[" Etanol",""],
+					"1":[" por unidade"," por veículo"]
+				}
+			},{
+				"nome":"Consumo de Gasolina",
+				"elementos":[
+					"Vendas_Gasolina",
+					"Vendas_Gasolina_por_unidade",
+					"Precos_Gasolina",
+					"Precos_Gasolina_Deflacionado"
+				],
+				"replacements":{
+					"0":[" Gasolina",""],
+					"1":[" por unidade"," por veículo"]
+				}
+			},{
+				"nome":"Consumo de Combustível",
+				"elementos":[
+					"Vendas_Total",
+					"Vendas_Total_por_unidade",
+					"Precos_Medio",
+					"Precos_Medio_Deflacionado"
+				],
+				"replacements":{
+					"0":[" Total"," (Gasolina + Etanol)"],
+					"1":[" por unidade"," por veículo"]
+				}
+			}
+		],
+		"features_groups":[
+			{
+				"nome":"Regiões Intermediárias",
+				"pasta":"regioes",
+				"elementos":[
+					"Região de Joinville",
+					"Região de Florianópolis",
+					"Região de Blumenau",
+					"Região de Criciúma",
+					"Região de Chapecó",
+					"Região de Lages"
+				]
+			}
+		],
+		"other_features_groups":[
+		{
+				"nome":"Grande Florianópolis",
+				"pasta":"florianopolis",
+				"elementos":[
+					"Florianópolis",
+					"Palhoça",
+					"Biguaçu",
+					"São José"
+				]
+			},{
+				"nome":"Grande Joinville",
+				"pasta":"joinville",
+				"elementos":[
+					"Joinville",
+					"Jaraguá do Sul"
+				]
+			},{
+				"nome":"Grande Blumenau",
+				"pasta":"blumenau",
+				"elementos":[
+					"Blumenau",
+					"Itajaí",
+					"Balneário Camboriú",
+					"Brusque"
+				]
+			},{
+				"nome":"Grande Criciúma",
+				"pasta":"criciuma",
+				"elementos":[
+					"Criciúma",
+					"Tubarão"
+				]
+			}
+		]
+	},
+	"Modelo":{
+		"Variaveis":{
+			"Explicada":"Vendas_Total",
+			"Explicativas":[
+				"Índice_de_Motorização_Autos",
+				"Índice_de_Motorização_Motos",
+				"PIB_per_capita_Deflacionado",
+				"Precos_Medio_Deflacionado"
+			]
+		},
+		"Parametros":{
+			"reg_valid_size":4,
+			"reg_horizonte":1,
+			"AR_trend":"t",
+			"AR_lags":3,
+			"VAR_trend":"t",
+			"VAR_lags":3,
+			"VAR_fit_maxiter":1200
+		}
+	},
+	"Downloads":[
+		{
+			"interface":"Detran_SC",
+			"file_name":"Automoveis.xlsx",
+			"opt":{
+				"grupos":{
+					"Automovel":["6-AUTOMOVEL"]
+				}
+			}
+		},{
+			"interface":"Detran_SC",
+			"file_name":"Motos.xlsx",
+			"opt":{
+				"grupos":{
+					"Motos":["4-MOTOCICLETA","3-MOTONETA","2-CICLOMOTOR"]
+				}
+			}
+		},{
+			"interface":"IBGE",
+			"file_name":"Populacao.xlsx",
+			"opt":{
+				"agregados":"6579",
+				"variaveis":"9324",
+				"loc_nivel":"N6"				
+			}
+		},{
+			"interface":"IBGE",
+			"file_name":"PIB.xlsx",
+			"opt":{
+				"agregados":"5938",
+				"variaveis":"37",
+				"loc_nivel":"N6"				
+			}
+		},{
+			"interface":"ANP",
+			"file_name":"Precos_Gasolina.xlsx",
+			"opt":{
+				"produtos":["GASOLINA"],
+				"fonte":"precos"
+			}
+		},{
+			"interface":"ANP",
+			"file_name":"Precos_Etanol.xlsx",
+			"opt":{
+				"produtos":["ETANOL"],
+				"fonte":"precos"
+			}
+		},{
+			"interface":"ANP",
+			"file_name":"Vendas_Gasolina.xlsx",
+			"opt":{
+				"fonte":"vendas",
+				"file":"vendas_gasolina.csv"
+			}
+		},{
+			"interface":"ANP",
+			"file_name":"Vendas_Etanol.xlsx",
+			"opt":{
+				"fonte":"vendas",
+				"file":"vendas_etanol.csv"
+			}
+		}
+	],
+	"Interfaces":{
+		"Detran_SC":{
+			"scheme":"http",
+			"netloc":"consultas.detrannet.sc.gov.br",
+			"path":"/Estatistica/Veiculos/winVeiculos.asp",
+			"params":"",
+			"query":"",
+			"fragment":""
+		},
+		"IBGE":{
+			"scheme":"https",
+			"netloc":"servicodados.ibge.gov.br",
+			"path":"",
+			"params":"",
+			"query":"",
+			"fragment":""
+		}
+	}
+}
